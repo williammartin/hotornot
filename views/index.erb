@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/cover.css">
+
+		<title>Hot Or Not - London Office Temperature Recorder</title>
+	</head>
+	<body class="text-center">
+
+		<div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+      <main role="main" class="inner cover mt-auto mb-auto">
+				<h1 class="cover-heading mb-4">Right now, the office is...</h1>
+				<p></p>
+				<p class="lead">
+					<a href="#" class="btn-lg btn-danger" data-toggle="modal" data-target="#formModal" data-sentiment="Too Hot">TOO HOT!</a>
+					<a href="#" class="btn-lg btn-success" data-toggle="modal" data-target="#formModal" data-sentiment="Just Right">JUST RIGHT!</a>
+					<a href="#" class="btn-lg btn-primary" data-toggle="modal" data-target="#formModal" data-sentiment="Too Cold">TOO COLD!</a>
+				</p>
+			</main>
+		</div>
+
+		<div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="formModalLabel">That's a shame!</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<form>
+							<div class="form-group">
+								<label for="sentiment">You said the temperature is...</label>
+							  <input type="text" class="form-control" id="sentiment" readonly>
+              </div>
+							<div class="form-group">
+								<label for="team">What team are you on?</label>
+								<select class="form-control" id="team">
+									<option>Garden</option>
+									<option>k8s c10s</option>
+									<option>Platform Recovery</option>
+									<option>SAPI</option>
+									<option>Service Enablement</option>
+									<option>RabbitMQ</option>
+									<option>Redis</option>
+								</select>
+							</div>
+						  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+							<button type="submit" class="btn btn-primary">Save</button>
+            </form>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+		<script>
+			$('#formModal').on('show.bs.modal', function (event) {
+				var button = $(event.relatedTarget)
+				var sentiment = button.data('sentiment')
+				var modal = $(this)
+				modal.find('.modal-body input').val(sentiment)
+			})
+		</script>
+  </body>
+</html>
